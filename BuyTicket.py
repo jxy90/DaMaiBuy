@@ -93,7 +93,6 @@ def login():
         except Exception as e:
             # 这里定位失败后的刷新按钮，重新加载滑块模块
             driver.find_element_by_xpath("//div[@id='havana_nco']/div/span/a").click()
-            print(e)
     mminput.send_keys(Keys.RETURN)
     time.sleep(2)
     driver.get(URL)
@@ -181,7 +180,7 @@ def buy():
 
 
 if __name__ == '__main__':
-    # inputUser()
+    inputUser()
     login()
     chooseTicket()
     chooseLoc()

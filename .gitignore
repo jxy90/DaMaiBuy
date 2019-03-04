@@ -1,0 +1,17 @@
+
+
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+build/
+dist/
+--pycache__/
+.spec
+
+
+*.log

@@ -14,7 +14,7 @@ URL_Login = 'https://m.damai.cn/damai/minilogin/index.html'#手机登录页面
 URL = 'https://m.damai.cn/damai/perform/item.html?projectId=139556&spm=a2o71.search.list.ditem_5'#手机页面
 USERNAME = ""
 PASSWORD = ""
-NAME="蒋晓宇"
+NAME="江小渔"
 TEL="17611242213"
 # 预估会出现的日期
 dateString = "03.09"
@@ -47,14 +47,12 @@ def inputUser():
     global PASSWORD
     print("请输入大麦网账号:")
     USERNAMETEMP = raw_input()
-    print(USERNAMETEMP)
     if '' != USERNAMETEMP:
         USERNAME = USERNAMETEMP
     print("请输入大麦网账号密码:")
     PASSWORDTEMP = raw_input()
     if '' != PASSWORDTEMP:
         PASSWORD = PASSWORDTEMP
-    print(PASSWORDTEMP)
 
 
 def login():
@@ -109,6 +107,7 @@ def chooseTicket():
         xzgmbtn = None
         if None == xzgmbtn:
             xzgmbtn = choose("button-group__btn1", By.CLASS_NAME)
+            time.sleep(0.5)
             xzgmbtn.click()
         # 2 日期选择
         datebtns  = driver.find_elements_by_class_name("buy-body-card__content-button")
@@ -125,7 +124,7 @@ def chooseTicket():
             continue
         else:
             print("点击")
-            time.sleep(0.5)
+            time.sleep(0.1)
             datebtn.click()
         # 3 时间选择
         datebtns  = driver.find_elements_by_class_name("buy-body-card__content-button")
@@ -147,6 +146,7 @@ def chooseTicket():
             break
     # 4 选座购买
     xzgmbtns = driver.find_elements_by_class_name("button-group__btn1")
+    time.sleep(0.1)
     xzgmbtns[1].click()
     print("ChooseTicket END!!!")
 
@@ -160,7 +160,7 @@ def buy():
     while True:
         if driver.current_url.find("trade") > -1:
             # 选择第一个购票人 dm-button
-            time.sleep(0.2)
+            time.sleep(0.3)
             driver.find_element_by_class_name("dm-button").click()
             # gprbtns = driver.find_element_by_css_selector(".dm-button.ticket-holder__scroller__btn.dm-button__default.dm-button__small")
             # gprbtns[0].click()
@@ -181,7 +181,7 @@ def buy():
 
 
 if __name__ == '__main__':
-    inputUser()
+    # inputUser()
     login()
     chooseTicket()
     chooseLoc()

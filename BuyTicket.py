@@ -109,6 +109,7 @@ def chooseTicket():
             time.sleep(0.5)
             xzgmbtn.click()
         # 2 日期选择
+        time.sleep(0.5)
         datebtns  = driver.find_elements_by_class_name("buy-body-card__content-button")
         datebtn = None
         for item in datebtns:
@@ -118,7 +119,7 @@ def chooseTicket():
                 break
         # 判断日期是否存在
         if None == datebtn:
-            print("没找到,滚回去重新找")
+            print("没找到,滚回去重新找1")
             driver.refresh()
             continue
         else:
@@ -135,7 +136,7 @@ def chooseTicket():
                 break
         # 判断时间是否存在
         if None == timebtn:
-            print("没找到,滚回去重新找")
+            print("没找到,滚回去重新找2")
             driver.refresh()
             continue
         else:
@@ -180,7 +181,8 @@ def buy():
 
 
 if __name__ == '__main__':
-    inputUser()
+    if USERNAME == "":
+        inputUser()
     login()
     chooseTicket()
     chooseLoc()

@@ -11,13 +11,18 @@ from selenium.webdriver.support import expected_conditions as EC
 
 #地址
 URL_Login = 'https://m.damai.cn/damai/minilogin/index.html'#手机登录页面
-URL = 'https://m.damai.cn/damai/perform/item.html?projectId=139556&spm=a2o71.search.list.ditem_5'#手机页面
+URL_KEY = ""
+URLDist = {
+    '新街口': 'https://m.damai.cn/damai/perform/item.html?projectId=139556&spm=a2o71.search.list.ditem_4',
+    '三里屯': 'https://m.damai.cn/damai/perform/item.html?projectId=139609&spm=a2o71.search.list.ditem_5',
+    '天桥': 'https://m.damai.cn/damai/perform/item.html?projectId=139562&spm=a2o71.search.list.ditem_9'
+           }
 USERNAME = ""
 PASSWORD = ""
 NAME="江小渔"
 TEL="17611242213"
 # 预估会出现的日期
-dateString = "03.09"
+dateString = "03.10"
 timeString = "19:30"
 
 driver = webdriver.Chrome("C:\chromedriver.exe")
@@ -40,6 +45,16 @@ def choose(seletor, by=By.XPATH, type=1):
     except Exception:
         print("Not found!")
         return None
+
+
+def init():
+    global dateString
+    global timeString
+    global URL_KEY
+    URL_KEY = "三里屯"
+    dateString = "03.17"
+    timeString = "19:30"
+    print("此程序仅供抢购" + URL_KEY + dateString + " " + timeString + "的票")
 
 
 def inputUser():
@@ -95,7 +110,7 @@ def login():
             driver.find_element_by_xpath("//div[@id='havana_nco']/div/span/a").click()
     mminput.send_keys(Keys.RETURN)
     time.sleep(2)
-    driver.get(URL)
+    driver.get(URLDist[URL_KEY])
     print("Login End!!!")
 
 
@@ -109,7 +124,7 @@ def chooseTicket():
             time.sleep(0.5)
             xzgmbtn.click()
         # 2 日期选择
-        time.sleep(0.5)
+        time.sleep(0.1)
         datebtns  = driver.find_elements_by_class_name("buy-body-card__content-button")
         datebtn = None
         for item in datebtns:
@@ -181,6 +196,7 @@ def buy():
 
 
 if __name__ == '__main__':
+    init()
     if USERNAME == "":
         inputUser()
     login()

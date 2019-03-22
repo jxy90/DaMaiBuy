@@ -15,6 +15,8 @@ URL_KEY = ""
 URLDist = {
     '新街口': 'https://m.damai.cn/damai/perform/item.html?projectId=139556&spm=a2o71.search.list.ditem_4',
     '三里屯': 'https://m.damai.cn/damai/perform/item.html?projectId=139609&spm=a2o71.search.list.ditem_5',
+    '广德楼': 'https://m.damai.cn/damai/perform/item.html?projectId=139554&spm=a2o71.search.list.ditem_6',
+    '湖广':  'https://m.damai.cn/damai/perform/item.html?projectId=139588&spm=a2o71.search.list.ditem_7',
     '天桥': 'https://m.damai.cn/damai/perform/item.html?projectId=139562&spm=a2o71.search.list.ditem_9'
            }
 USERNAME = ""
@@ -51,9 +53,9 @@ def init():
     global dateString
     global timeString
     global URL_KEY
-    URL_KEY = "三里屯"
-    dateString = "03.17"
-    timeString = "19:30"
+    URL_KEY = "湖广"
+    dateString = "03.31"
+    timeString = "14:30"
     print("此程序仅供抢购" + URL_KEY + dateString + " " + timeString + "的票")
 
 
@@ -157,7 +159,8 @@ def chooseTicket():
         else:
             print("点击")
             time.sleep(0.1)
-            timebtn.click()
+            if timeString != '14:30':
+                timebtn.click()
             break
     # 4 选座购买
     xzgmbtns = driver.find_elements_by_class_name("button-group__btn1")
